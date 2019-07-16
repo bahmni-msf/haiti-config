@@ -7,25 +7,31 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-        <changeSet id="HAITI_CONFIG_260620192304" author="Pritam">
-          <comment>Stored Procedure to add concept</comment>
-          <sqlFile path="addConceptProcedure.sql" endDelimiter="#"/>
-        </changeSet>
-        <changeSet id="HAITI_CONFIG_201906270015" author="Pritam">
-          <comment>Stored Procedure to add concept answer</comment>
-          <sqlFile path="addConceptAnswerProcedure.sql" endDelimiter="#"/>
-        </changeSet>
-        <changeSet id="HAITI_CONFIG_201907021542" author="Pritam">
-          <comment>Stored Procedure to add reference term</comment>
-          <sqlFile path="createReferenceMappingORGOPENMRSMODULEEMRAPI.sql" endDelimiter="#"/>
-        </changeSet>
-        <changeSet id="HAITI_CONFIG_260620192058" author="Pritam">
-          <comment>Deleting all bed location tags and bed location maps</comment>
-          <sqlFile path="bedManagement/clearBedLayout.sql"/>
-        </changeSet>
-        <changeSet id="HAITI_CONFIG_260620192059" author="Pritam">
-          <comment>Stored Procedure to insert beds into locations</comment>
-          <sqlFile path="bedManagement/insertBedIntoLocationStoredProcedure.sql" endDelimiter="#"/>
-        </changeSet>
-        <include file ="bedManagement/addBedManagementModule.xml"/>
+    <changeSet id="HAITI_CONFIG_260620192304" author="Pritam">
+        <comment>Stored Procedure to add concept</comment>
+        <sqlFile path="addConceptProcedure.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_201906270015" author="Pritam">
+        <comment>Stored Procedure to add concept answer</comment>
+        <sqlFile path="addConceptAnswerProcedure.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_201907021542" author="Pritam">
+        <comment>Stored Procedure to add reference term</comment>
+        <sqlFile path="createReferenceMappingORGOPENMRSMODULEEMRAPI.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_260620192058" author="Pritam">
+        <comment>Deleting all bed location tags and bed location maps</comment>
+        <sqlFile path="bedManagement/clearBedLayout.sql"/>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_260620192059" author="Pritam">
+        <comment>Stored Procedure to insert beds into locations</comment>
+        <sqlFile path="bedManagement/insertBedIntoLocationStoredProcedure.sql" endDelimiter="#"/>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_201907151130" author="Bindu, Alekhya">
+        <comment>Stored Procedure to create users and assign bed management and registration roles</comment>
+        <sqlFile path="bedManagement/createBedManagementUserProcedure.sql" endDelimiter="#"/>
+    </changeSet>
+    <include file="bedManagement/addBedManagementModule.xml"/>
+    <include file="bedManagement/createBedManagementUsers.xml"/>
+
 </databaseChangeLog>
