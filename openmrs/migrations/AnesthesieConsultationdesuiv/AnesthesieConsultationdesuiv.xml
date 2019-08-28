@@ -587,4 +587,63 @@
 
         </sql>
     </changeSet>
+    <changeSet id="HAITI_CONFIG_201908261236" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                 select COUNT(*) from concept_name where name = "ACS, Type de médicaments";
+             </sqlCheck>
+        </preConditions>
+        <comment>Adding New concept ACS, Type de médicaments </comment>
+            <sql>
+
+                set @concept_id = 0;
+                set @concept_short_id = 0;
+                set @concept_full_id = 0;
+                set @count = 0;
+                set @uuid = NULL;
+
+                call add_concept(@concept_id,@concept_short_id,@concept_full_id,"ACS, Type de médicaments","Type de médicaments",'Text','Misc',false);
+
+             </sql>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_201908260415" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="5">
+                SELECT COUNT(*) FROM concept_name WHERE NAME IN
+                        (
+                        'ABO incompatibility','Anaphylaxis','Fever','Hemolysis','Urticaria'
+                        )
+                        AND concept_name_type = 'FULLY_SPECIFIED' AND locale = 'fr' AND voided = 0 ;
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding Answers to Outcome of Type d'anesthésie prévue</comment>
+        <sql>
+            set @concept_id = 0;
+
+            select concept_id into @concept_id1 from concept_name where name = "ABO incompatibility" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+            update concept_name set name="incompatibilité ABO" where concept_id=@concept_id1;
+
+            select concept_id into @concept_id2 from concept_name where name = "Anaphylaxis" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+            update concept_name set name="Anaphylaxie" where concept_id=@concept_id2;
+
+            select concept_id into @concept_id3 from concept_name where name = "Fever" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+            update concept_name set name="Fièvre" where concept_id=@concept_id3;
+
+            select concept_id into @concept_id4 from concept_name where name = "Hemolysis" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+            update concept_name set name="Hemolyse" where concept_id=@concept_id4;
+
+            select concept_id into @concept_id5 from concept_name where name = "Urticaria" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+            update concept_name set name="Urticaire" where concept_id=@concept_id5;
+        </sql>
+        </changeSet>
 </databaseChangeLog>

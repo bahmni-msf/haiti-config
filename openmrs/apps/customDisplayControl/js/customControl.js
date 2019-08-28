@@ -165,11 +165,24 @@ angular.module('bahmni.common.displaycontrol.custom')
                 q: "bahmni.sqlGet.ipdPatientMovementHistory",
                 v: "full"
             };
-            return $http.get('/openmrs/ws/rest/v1/bahmnicore/sql', {
-                method: "GET",
-                params: params,
+
+            return  $http.get(Bahmni.Common.Constants.visitUrl, {
+                params: {
+                    patient: $scope.patient.uuid, includeInactive: false, v: "custom:(uuid,location:(uuid))"
+                },
                 withCredentials: true
+            }).then(function (response) {
+                debugger;
+                let result = response.data.results;
+                let visitUuid= result[0].uuid;
+                params.visitUuid= visitUuid;
+                return $http.get('/openmrs/ws/rest/v1/bahmnicore/sql', {
+                    method: "GET",
+                    params: params,
+                    withCredentials: true
+                });
             });
+
         };
 
         spinner.forPromise(getResponseFromQuery().then(function (response) {
