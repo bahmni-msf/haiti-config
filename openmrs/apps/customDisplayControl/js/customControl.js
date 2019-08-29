@@ -158,31 +158,32 @@ angular.module('bahmni.common.displaycontrol.custom')
             return $scope.$emit("no-data-present-event");
         };
 
-        var getResponseFromQuery = function () {
+        var getVisitUuid = function () {
             var params = {
-                patientUuid: $scope.patient.uuid,
-                visitUuid: $stateParams.visitUuid,
-                q: "bahmni.sqlGet.ipdPatientMovementHistory",
-                v: "full"
+                patient: $scope.patient.uuid,
+                includeInactive: false
             };
-
-            return  $http.get(Bahmni.Common.Constants.visitUrl, {
-                params: {
-                    patient: $scope.patient.uuid, includeInactive: false, v: "custom:(uuid,location:(uuid))"
-                },
+            return $http.get(Bahmni.Common.Constants.visitUrl, {
+                method: "GET",
+                params: params,
                 withCredentials: true
-            }).then(function (response) {
-                debugger;
-                let result = response.data.results;
-                let visitUuid= result[0].uuid;
-                params.visitUuid= visitUuid;
+            });
+        };
+        var getResponseFromQuery = function () {
+            return getVisitUuid().then(function (response) {
+                var visitUuid = ($scope.visitUuid)? $scope.visitUuid : response.data.results[0].uuid;
+                var params = {
+                    patientUuid: $scope.patient.uuid,
+                    visitUuid: visitUuid,
+                    q: "bahmni.sqlGet.ipdPatientMovementHistory",
+                    v: "full"
+                };
                 return $http.get('/openmrs/ws/rest/v1/bahmnicore/sql', {
                     method: "GET",
                     params: params,
                     withCredentials: true
                 });
             });
-
         };
 
         spinner.forPromise(getResponseFromQuery().then(function (response) {

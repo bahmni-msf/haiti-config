@@ -25,6 +25,7 @@
                 "allowFutureDates": true
             }
         },
+        "patientForwardUrl": "../clinical/index.html#/default/patient/{{patientUuid}}/dashboard?currentTab=DASHBOARD_TAB_GENERAL_KEY",
         "hideStartNewVisitPopUp": true ,
         "colorForTags": [
             {
