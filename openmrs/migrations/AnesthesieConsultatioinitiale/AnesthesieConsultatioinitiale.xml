@@ -858,4 +858,10 @@
 
         </sql>
     </changeSet>
+    <changeSet id="HAITI_CONFIG_201908301624" author="Pritam">
+      <comment>updating datatypes for Date la consultation</comment>
+      <sql>
+      update concept set datatype_id = (select concept_datatype_id from concept_datatype where name='Date') where concept_id =(select concept_id from concept_name where name ="ACI, Date la consultation" and concept_name_type='FULLY_SPECIFIED' and locale = 'fr');
+      </sql>
+    </changeSet>
 </databaseChangeLog>

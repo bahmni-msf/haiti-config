@@ -646,4 +646,258 @@
             update concept_name set name="Urticaire" where concept_id=@concept_id5;
         </sql>
         </changeSet>
+        <changeSet id="HAITI_CONFIG_201908301623" author="Pritam">
+            <comment>updating datatypes for Date la consultation</comment>
+            <sql>
+            update concept set datatype_id = (select concept_datatype_id from concept_datatype where name='Date') where concept_id =(select concept_id from concept_name where name ="ACS, Date la consultation" and concept_name_type='FULLY_SPECIFIED' and locale = 'fr');
+            </sql>
+        </changeSet>
+        <changeSet id="HAITI_CONFIG_201908301549" author="Pritam">
+            <preConditions onFail="MARK_RAN">
+              <sqlCheck expectedResult="0">
+              select count(*) from concept_name  where name in ("Pansement à l'alginate de calcium");
+              </sqlCheck>
+            </preConditions>
+          <comment>updating the concept names Pansement à l'alginate de calcium </comment>
+            <sql>
+            update concept_name set name = "Pansement à l'alginate de calcium"  where name ="Pansement àl'alginate de calcium";
+            </sql>
+        </changeSet>
+        <changeSet id="HAITI_CONFIG_201908301727" author="Pritam">
+          <comment>deleteing existing reference terms </comment>
+            <sql>
+            delete from concept_reference_map where concept_id in (select concept_id from concept_name where name in ("Manipulation sous anesthésie","Débridement d'os","Drainage des plaies","Révision de cicatrice","Manipulation sous anesthésie"));
+            </sql>
+        </changeSet>
+        <changeSet id="HAITI_CONFIG_201908301456" author="Pritam">
+            <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+        				select
+        				count(*)
+        				from
+        				concept_name
+        				where
+        				name in (
+        				"Suture secondaire", "Débridement excisionnel d'une plaie, d'une infection ou d'une brûlure",
+                "Injection de stéroïde", "Pose PICC line", "Insertion / retrait du drain ou du tube",
+                "Biopsie des tissus mous", "Ablation des sutures", "Ablation de tissu expandeur",
+                "Pose de Cathéter Veineux Central", "Incision de décharge", "Escarrotomie", "Escarrectomie",
+                "Pansement post GDP", "Inflation tissu expander"
+        				)
+        				and  concept_name_type = "FULLY_SPECIFIED" and voided = 0 AND locale = 'fr';
+            </sqlCheck>
+            </preConditions>
+            <comment>Adding concepts for Regime ARV form</comment>
+            <sql>
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Suture secondaire","Suture secondaire",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Débridement excisionnel d'une plaie, d'une infection ou d'une brûlure","Débridement excisionnel d'une plaie, d'une infection ou d'une brûlure",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Injection de stéroïde","Injection de stéroïde",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Pose PICC line","Pose PICC line",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Insertion / retrait du drain ou du tube","Insertion / retrait du drain ou du tube",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Biopsie des tissus mous","Biopsie des tissus mous",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Ablation des sutures","Ablation des sutures",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Ablation de tissu expandeur","Ablation de tissu expandeur",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Pose de Cathéter Veineux Central","Pose de Cathéter Veineux Central",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Incision de décharge","Incision de décharge",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Escarrotomie","Escarrotomie",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Escarrectomie","Escarrectomie",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Pansement post GDP","Pansement post GDP",'N/A','Misc',false);
+        				call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Inflation tissu expander","Inflation tissu expander",'N/A','Misc',false);
+            </sql>
+        </changeSet>
+        <changeSet id="HAITI_CONFIG_201908300344" author="SreeKalyan">
+          	<preConditions onFail="MARK_RAN">
+          		<sqlCheck expectedResult="4">
+                          select
+                          count(*)
+                          From
+                          concept_reference_term
+                          where `code` in
+                          (
+                          "LZZ JG AA", "PZX DL AE", "LZZ JD AA", "PZX JB AE")
+                          and retired = 0
+                          and concept_source_id = (
+                          select concept_source_id from concept_reference_source where `name` = 'ICHI'  and retired =0
+                          );
+                  </sqlCheck>
+              </preConditions>
+                  <comment>Adding codes to specific concepts</comment>
+                  	<sql>
+                			call CREATE_REFERENCE_MAPPING_ICHI("Suture secondaire","LZZ JG AA");
+                			call CREATE_REFERENCE_MAPPING_ICHI("Pose PICC line","PZX DL AE");
+                			call CREATE_REFERENCE_MAPPING_ICHI("Biopsie des tissus mous","LZZ JD AA");
+                			call CREATE_REFERENCE_MAPPING_ICHI("Révision de cicatrice","PZX JB AE");
+                  	</sql>
+          </changeSet>
+          <changeSet id="HAITI_CONFIG_201908300349" author="SreeKalyan">
+          	<preConditions onFail="MARK_RAN">
+          		<sqlCheck expectedResult="7">
+                          select
+                          count(*)
+                          From
+                          concept_reference_term
+                          where `code` in
+                          (
+                          "SCTID: 71406001", "SCTID: 425196008", "SCTID: 274470005", "SCTID: 56333001","SCTID: 284079008","SCTID: 23248003","SCTD:  46211007")
+                          and retired = 0
+                          and concept_source_id = (
+                          select concept_source_id from concept_reference_source where `name` = 'SNOMED-CT'  and retired =0
+                          );
+                  </sqlCheck>
+              </preConditions>
+                  <comment>Adding codes to specific concepts</comment>
+                  	<sql>
+                  			call CREATE_REFERENCE_MAPPING_SNOMED("Débridement excisionnel d'une plaie, d'une infection ou d'une brûlure","SCTID: 71406001");
+                  			call CREATE_REFERENCE_MAPPING_SNOMED("Injection de stéroïde","SCTID: 425196008");
+                  			call CREATE_REFERENCE_MAPPING_SNOMED("Insertion / retrait du drain ou du tube","SCTID: 274470005");
+                  			call CREATE_REFERENCE_MAPPING_SNOMED("Manipulation sous anesthésie","SCTID: 56333001");
+                  			call CREATE_REFERENCE_MAPPING_SNOMED("Ablation des sutures","SCTID: 284079008");
+                  			call CREATE_REFERENCE_MAPPING_SNOMED("Ablation de tissu expandeur","SCTID: 23248003");
+                  			call CREATE_REFERENCE_MAPPING_SNOMED("Drainage des plaies","SCTD:  46211007");
+                  	</sql>
+          </changeSet>
+        <changeSet id="HAITI_CONFIG_201908301517" author="Pritam">
+                <preConditions onFail="MARK_RAN">
+                    <sqlCheck expectedResult="92">
+                           select count(*) from concept_answer ca
+                           join
+                           concept_name cn
+                           on ca.concept_id = cn.concept_id
+                           where ca.answer_concept IN (select concept_id from concept_name where name IN
+                           (
+                           "Changement de pansement", "Débridement/Excision", "Greffe de peau pleine ", "Insertion d'un cathéter central périphérique", "Insertion / retrait drain ou tube", "Manipulation sous anesthésie", "Bloc nerveux", "Enlèvement de sutures (pinces, etc.), peau", "Révision de cicatrice", "Collecte d'échantillons pour la microbiologie, écouvillon", "Drainage des plaies", "Débridement d'os", "Insertion VVC", "lambeau inguinal", "Incisions de décharge", "Pansement à la sulfadiazine", "Pansement à l'acétate de mafénide", "Pansement au gel de betadine", "Pansement àl'alginate de calcium", "Pansement humide à la betadine", "Hémostase aux fils de suture", "Hémostase au surgicel", "Hémostase au cauter ", "Lachage de fils de suture"
+                           )
+                           and concept_name_type = "FULLY_SPECIFIED" AND locale = 'fr' and voided = 0 )
+                           AND
+                           cn.concept_id IN (select concept_id from concept_name where name = "ACS, Type d'intervention prévue");
+                        </sqlCheck>
+                </preConditions>
+                <comment>Removing Old answer from  Type d'intervention prévue</comment>
+                <sql>
+                    delete from concept_answer where concept_id IN (SELECT concept_id from concept_name where name = "ACS, Type d'intervention prévue");
+                </sql>
+        </changeSet>
+        <changeSet id="HAITI_CONFIG_201908301457" author="Pritam">
+                <preConditions onFail="MARK_RAN">
+                    <sqlCheck expectedResult="0">
+                        select count(*) from concept_answer ca
+                        join
+                        concept_name cn
+                        on ca.concept_id = cn.concept_id
+                        where ca.answer_concept IN (select concept_id from concept_name where name IN
+                        ("Changement de pansement", "Débridement/Excision", "Greffe de peau pleine ", "Insertion d'un cathéter central périphérique", "Insertion / retrait drain ou tube", "Manipulation sous anesthésie", "Bloc nerveux", "Enlèvement de sutures (pinces, etc.), peau", "Révision de cicatrice", "Collecte d'échantillons pour la microbiologie, écouvillon", "Drainage des plaies", "Débridement d'os", "Insertion VVC", "lambeau inguinal", "Incisions de décharge", "Pansement à la sulfadiazine", "Pansement à l'acétate de mafénide", "Pansement au gel de betadine", "Pansement à l'alginate de calcium", "Pansement humide à la betadine", "Hémostase aux fils de suture", "Hémostase au surgicel", "Hémostase au cauter ", "Lachage de fils de suture")
+                        and concept_name_type = "FULLY_SPECIFIED")
+                        AND
+                        cn.concept_id IN (select concept_id from concept_name where name = "ACS, Type d'intervention prévue");
+                    </sqlCheck>
+                </preConditions>
+                <comment>Adding Answers to Outcome of Type d'intervention prévue</comment>
+                <sql>
+                    set @concept_id = 0;
+                    set @child1_concept_id = 0;
+                    set @child2_concept_id = 0;
+                    set @child3_concept_id = 0;
+                    set @child4_concept_id = 0;
+                    set @child5_concept_id = 0;
+                    set @child6_concept_id = 0;
+                    set @child7_concept_id = 0;
+                    set @child8_concept_id = 0;
+                    set @child9_concept_id = 0;
+                    set @child10_concept_id = 0;
+                    set @child11_concept_id = 0;
+                    set @child12_concept_id = 0;
+                    set @child13_concept_id = 0;
+                    set @child14_concept_id = 0;
+                    set @child15_concept_id = 0;
+                    set @child16_concept_id = 0;
+                    set @child17_concept_id = 0;
+                    set @child18_concept_id = 0;
+                    set @child19_concept_id = 0;
+                    set @child20_concept_id = 0;
+                    set @child21_concept_id = 0;
+                    set @child22_concept_id = 0;
+                    set @child23_concept_id = 0;
+                    set @child24_concept_id = 0;
+                    set @child25_concept_id = 0;
+
+                    select concept_id into @concept_id from concept_name where name = "ACS, Type d'intervention prévue" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child1_concept_id from concept_name where name = "Changement de pansement" and concept_name_type =
+                    'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child2_concept_id from concept_name where name = "Suture secondaire" and concept_name_type =
+                    'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child3_concept_id from concept_name where name = "Débridement excisionnel d'une plaie, d'une infection ou d'une brûlure" and concept_name_type =
+                    'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child4_concept_id from concept_name where name = "Injection de stéroïde" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child5_concept_id from concept_name where name = "Pose PICC line" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child6_concept_id from concept_name where name = "Insertion / retrait du drain ou du tube" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child7_concept_id from concept_name where name = "Manipulation sous anesthésie" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child8_concept_id from concept_name where name = "Biopsie des tissus mous" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child9_concept_id from concept_name where name = "Ablation des sutures" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child10_concept_id from concept_name where name = "Ablation de tissu expandeur" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child11_concept_id from concept_name where name = "Révision de cicatrice" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child12_concept_id from concept_name where name = "Drainage des plaies" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child13_concept_id from concept_name where name = "Débridement d'os" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child14_concept_id from concept_name where name = "Pose de Cathéter Veineux Central" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child15_concept_id from concept_name where name = "Incision de décharge" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child16_concept_id from concept_name where name = "Escarrotomie" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child17_concept_id from concept_name where name = "Escarrectomie" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child18_concept_id from concept_name where name = "Pansement à la sulfadiazine" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child19_concept_id from concept_name where name = "Pansement à l'acétate de mafénide" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child20_concept_id from concept_name where name = "Pansement au gel de betadine" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child21_concept_id from concept_name where name = "Pansement à l'alginate de calcium" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child22_concept_id from concept_name where name = "Pansement humide à la betadine" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child23_concept_id from concept_name where name = "Lachage de fils de suture" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child24_concept_id from concept_name where name = "Pansement post GDP" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                    select concept_id into @child25_concept_id from concept_name where name = "Inflation tissu expander" and
+                    concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+                    call add_concept_answer(@concept_id, @child1_concept_id, 1);
+                    call add_concept_answer(@concept_id, @child2_concept_id, 2);
+                    call add_concept_answer(@concept_id, @child3_concept_id, 3);
+                    call add_concept_answer(@concept_id, @child4_concept_id, 4);
+                    call add_concept_answer(@concept_id, @child5_concept_id, 5);
+                    call add_concept_answer(@concept_id, @child6_concept_id, 6);
+                    call add_concept_answer(@concept_id, @child7_concept_id, 7);
+                    call add_concept_answer(@concept_id, @child8_concept_id, 8);
+                    call add_concept_answer(@concept_id, @child9_concept_id, 9);
+                    call add_concept_answer(@concept_id, @child10_concept_id, 10);
+                    call add_concept_answer(@concept_id, @child11_concept_id, 11);
+                    call add_concept_answer(@concept_id, @child12_concept_id, 12);
+                    call add_concept_answer(@concept_id, @child13_concept_id, 13);
+                    call add_concept_answer(@concept_id, @child14_concept_id, 14);
+                    call add_concept_answer(@concept_id, @child15_concept_id, 15);
+                    call add_concept_answer(@concept_id, @child16_concept_id, 16);
+                    call add_concept_answer(@concept_id, @child17_concept_id, 17);
+                    call add_concept_answer(@concept_id, @child18_concept_id, 18);
+                    call add_concept_answer(@concept_id, @child19_concept_id, 19);
+                    call add_concept_answer(@concept_id, @child20_concept_id, 20);
+                    call add_concept_answer(@concept_id, @child21_concept_id, 21);
+                    call add_concept_answer(@concept_id, @child22_concept_id, 22);
+                    call add_concept_answer(@concept_id, @child23_concept_id, 23);
+                    call add_concept_answer(@concept_id, @child24_concept_id, 24);
+                    call add_concept_answer(@concept_id, @child25_concept_id, 25);
+                </sql>
+        </changeSet>
 </databaseChangeLog>
