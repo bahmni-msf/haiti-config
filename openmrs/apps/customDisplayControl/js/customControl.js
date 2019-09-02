@@ -171,7 +171,7 @@ angular.module('bahmni.common.displaycontrol.custom')
         };
         var getResponseFromQuery = function () {
             return getVisitUuid().then(function (response) {
-                var visitUuid = ($scope.visitUuid)? $scope.visitUuid : response.data.results[0].uuid;
+                var visitUuid = ($scope.visitUuid)? $scope.visitUuid : (response.data.results.length > 0) ? response.data.results[0].uuid : 0;
                 var params = {
                     patientUuid: $scope.patient.uuid,
                     visitUuid: visitUuid,
