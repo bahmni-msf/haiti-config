@@ -295,7 +295,7 @@
                         "title": null,
                         "maximumNoOfVisits": 5
                       },
-                      "formGroup": ["Signes vitaux","Anesthésie Consultation Initiale","Anesthésie Note post opératoire","Anesthésie Consultation de suivi"],
+                      "formGroup": ["Signes vitaux","Anesthésie Consultation Initiale","Anesthesie CR Opératoire","Anesthésie Consultation de suivi"],
                       "translationKey": "Modifier les formulaires"
                 },
        "Radiology": {

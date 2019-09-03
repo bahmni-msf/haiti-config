@@ -42,7 +42,7 @@
   "BED_MANAGEMENT_MOVEMENT_KEY":"Mouvement",
   "BED_MANAGEMENT_MOVE_KEY":"Déplacer",
   "BED_MANAGEMENT_CANCEL_KEY":"Supprimer",
-  "DISCHARGE_SUMMARY_KEY":"Veuillez vous assurer que l'Orientation du Patient est bien saisie avant de libérer un patient",
+  "DISCHARGE_SUMMARY_KEY":"Veuillez vous assurer que l'orientation du patient est bien enregistrée avant de libérer un patient.",
   "DISCHARGE_FORM_KEY":"Sortie de",
   "PLEASE_SELECT_BED_ADMIT_PATIENT":"Svp, selectionner un lit pour admettre le patient",
   "ADMIT_SUMMARY_KEY":"Recapitulatifs des admissions",
