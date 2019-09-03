@@ -12,6 +12,8 @@
         "visitUuid"
     ],
     "config": {
+        "wardListPrintViewTemplateUrl": "/bahmni_config/openmrs/apps/ipd/wardListPrint.html",
+        "wardListPrintAttributes":[],
         "wardListSqlSearchHandler": "emrapi.sqlGet.allWardsListDetails",
         "diagnosisStatus": "Inactive",
         "onAdmissionForwardTo": "#/bedManagement/patient/{{patientUuid}}/visit/{{visitUuid}}",
@@ -25,6 +27,7 @@
                 "allowFutureDates": true
             }
         },
+        "patientForwardUrl": "../clinical/index.html#/default/patient/{{patientUuid}}/dashboard?currentTab=DASHBOARD_TAB_GENERAL_KEY",
         "hideStartNewVisitPopUp": true ,
         "colorForTags": [
             {
@@ -137,7 +140,7 @@
                         "pivotTable": {}
                     }
                 },
-                "AneshesieInitialeForm": {
+                "Anesthesie Consultation initiale": {
                     "translationKey": "DASHBOARD_ANESTHESIA_INITIALE_DISPLAYCONTROL_KEY",
                     "type": "vitals",
                     "isObservation": true,
@@ -225,7 +228,7 @@
                         "pivotTable": {}
                     }
                 },
-                "AnesthesieConsultationdesuiv": {
+                "Anesthesie Consultation de suiv": {
                     "translationKey": "DASHBOARD_ANESTHESIA_DE_SUIVI_DISPLAYCONTROL_KEY",
                     "type": "vitals",
                     "isObservation": true,
@@ -273,7 +276,7 @@
                         "pivotTable": {}
                     }
                 },
-                "AanesthesieNotesPostOperatoir": {
+                "Anesthesie Consultation de suiv": {
                     "translationKey": "DASHBOARD_ANESTHESIA_POST_OPERATOIRE_DISPLAYCONTROL_KEY",
                     "type": "vitals",
                     "isObservation": true,
@@ -485,6 +488,15 @@
                         "pivotTable": {}
                     }
                 },
+                "patientMovementHistory": {
+                    "type": "custom",
+                    "displayType": "Full-Page",
+                    "displayOrder": 20,
+                    "config": {
+                        "title": "DASHBOARD_TITLE_PATIENT_MOVEMENT_HISTORY_KEY",
+                        "template": "<patient-movement-history section='section' patient='patient' visitUuid='visitUuid'></patient-movement-history>"
+                    }
+                },
                 "Surgical Procedures": {
                     "translationKey": "DASHBOARD_SURGICAL_PROCEDURES_KEY",
                     "type": "vitals",
@@ -506,15 +518,6 @@
                         "numberOfVisits": 3,
                         "showDetailsButton": true,
                         "pivotTable": {}
-                    }
-                },
-                "patientMovementHistory": {
-                    "type": "custom",
-                    "displayType": "Full-Page",
-                    "displayOrder": 20,
-                    "config": {
-                        "title": "DASHBOARD_TITLE_PATIENT_MOVEMENT_HISTORY_KEY",
-                        "template": "<patient-movement-history section='section' patient='patient' visitUuid='visitUuid'></patient-movement-history>"
                     }
                 }
             }

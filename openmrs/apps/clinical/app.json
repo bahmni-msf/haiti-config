@@ -39,7 +39,7 @@
     	"diagnosisStatus": "Inactive",
         "adtNavigationConfig": {
             "hideGoToIPDButton": false,
-            "forwardUrl": "../bedmanagement/#/patient/{{patientUuid}}/visit/{{visitUuid}}/dashboard",
+            "forwardUrl": "../bedmanagement/#/bedManagement/patient/{{patientUuid}}",
             "privilege": "app:adt",
             "title": "Go to IPD dashboard"
         },

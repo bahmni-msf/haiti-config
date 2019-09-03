@@ -3,5 +3,6 @@
   "MODULE_LABEL_ACTIVE_PATIENTS_KEY":"Patients actifs",
   "SEARCH_NAME_PLACEHOLDER_KEY": "Recherche Nom / ID ...",
   "SEARCH_KEY": "Rechercher",
-  "NOTES_LABEL": "Remarques"
+  "NOTES_LABEL": "Remarques",
+  "YEARS_LABEL": "Années"
 }

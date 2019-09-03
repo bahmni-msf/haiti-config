@@ -824,4 +824,44 @@
 
         </sql>
     </changeSet>
+
+    <changeSet id="HAITI_CONFIG_201908271640" author="SreeKalyan">
+        <preConditions onFail="MARK_RAN">
+        <sqlCheck expectedResult="1">
+
+            select count(*) from concept_answer ca
+            join
+            concept_name cn
+            on ca.concept_id = cn.concept_id
+            where ca.answer_concept IN (select concept_id from concept_name where name IN ("Ne sait pas") and concept_name_type = "FULLY_SPECIFIED")
+            AND
+            cn.concept_id IN (select concept_id from concept_name where name = "ACI, J'ai discuté les risques et bénéfices de l'anesthésie et ai répondu à toutes les questions?")
+            AND
+            concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+        </sqlCheck>
+        </preConditions>
+        <comment>Remove the child concept for ACI, J'ai discuté les risques et bénéfices de l'anesthésie et ai répondu à toutes les questions?</comment>
+        <sql>
+
+            set @concept_id = 0;
+            set @conceptId1 = 0;
+            set @conceptId2 = 0;
+
+            select concept_id into @concept_id1 from concept_name where name = "ACI, J'ai discuté les risques et bénéfices de l'anesthésie et ai répondu à toutes les questions?" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+            select concept_id into @concept_id2 from concept_name where name="Ne sait pas" and
+            concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+            delete from concept_answer WHERE concept_id=@concept_id1 and answer_concept=@concept_id2;
+
+        </sql>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_201908301624" author="Pritam">
+      <comment>updating datatypes for Date la consultation</comment>
+      <sql>
+      update concept set datatype_id = (select concept_datatype_id from concept_datatype where name='Date') where concept_id =(select concept_id from concept_name where name ="ACI, Date la consultation" and concept_name_type='FULLY_SPECIFIED' and locale = 'fr');
+      </sql>
+    </changeSet>
 </databaseChangeLog>
