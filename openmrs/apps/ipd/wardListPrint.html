@@ -3,8 +3,6 @@
         size: A4 landscape;
     }
 
-
-
     body {
         font-family: sans-serif;
         font-size: 10px !important;
@@ -64,25 +62,6 @@
             display: table-header-group
         }
 
-        .custom-footer-page-number {
-            page-break-before: always;
-            display: table-footer-group;
-        }
-
-        .custom-footer-page-number:after {
-            display: block;
-            text-align: right;
-            counter-increment: chapter;
-            content: counter(chapter);
-        }
-
-        #footer {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            right: 0;
-        }
-
     }
 </style>
 
@@ -119,16 +98,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="row in tableData">
+            <tr ng-repeat="row in tableData" ng-if="!isEmptyRow(row)">
                 <td ng-repeat="heading in tableHeader">
                     <span>{{row[heading]}}</span>
                 </td>
             </tr>
             </tbody>
         </table>
-    </div>
-
-    <div id="footer">
-        <span class="custom-footer-page-number"></span>
     </div>
 </div>
