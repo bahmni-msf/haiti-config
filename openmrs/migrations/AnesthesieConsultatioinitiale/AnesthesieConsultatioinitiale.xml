@@ -864,4 +864,17 @@
       update concept set datatype_id = (select concept_datatype_id from concept_datatype where name='Date') where concept_id =(select concept_id from concept_name where name ="ACI, Date la consultation" and concept_name_type='FULLY_SPECIFIED' and locale = 'fr');
       </sql>
     </changeSet>
+    <changeSet id="HAITI_CONFIG_201909061141" author="Pritam">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+             select count(*) from concept_numeric where concept_id = (select concept_id from concept_name where name = 'ACI, taux de plaquettes' and concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0)
+            </sqlCheck>
+        </preConditions>
+        <comment> updating for unit for taux de plaquettes </comment>
+        <sql>
+            select concept_id into @concept_id from concept_name where name = 'ACI, taux de plaquettes' and concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+
+            update concept_numeric set units = '10³/mm3' where concept_id = @concept_id;
+        </sql>
+    </changeSet>
 </databaseChangeLog>

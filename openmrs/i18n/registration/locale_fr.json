@@ -47,5 +47,6 @@
   "REGISTRATION_LABEL_SELECT_GENDER": "Sélectionner genre",
   "REGISTRATION_PRINT_STICKER_KEY": "Imprimer les étiquettes",
   "MESSAGE_DIALOG_OPTION_COPY" : "Erreur de copie",
-  "MESSAGE_DIALOG_OPTION_OKAY": "D'accord"
+  "MESSAGE_DIALOG_OPTION_OKAY": "D'accord",
+  "PATIENT_ADMISSION_READDMISSION_DETAILS" : "Le patient est-il admis/réadmis dans la structure :"
 }

@@ -108,7 +108,7 @@
   "DASHBOARD_TITLE_PATIENT_INFORMATION_KEY": "Information du patient",
   "NO_DATA_MESSAGE": "Pas de données capturées",
   "DASHBOARD_TITLE_SOCIAL_HISTORY": "Antécédents sociaux",
-  "DISPLAY_CONTROL_ERROR_MESSAGE_KEY": "Pas d'antécédents sociaux pour ce patient",
+  "DISPLAY_CONTROL_ERROR_MESSAGE_KEY": "Pas de données pour ce patient",
   "DASHBOARD_TITLE_REVIEW_OF_SYSTEMS": "Révision des systèmes",
   "DASHBOARD_TITLE_PATIENT_MEDICAL_HISTORY": "Anamnèse",
   "DASHBOARD_TITLE_PHYSICAL_EXAMINATION_KEY": "Examen physique",
@@ -133,5 +133,9 @@
   "DASHBOARD_ANESTHESIA_DE_SUIVI_DISPLAYCONTROL_KEY": "Anesthesie Consultation de suivi",
   "DASHBOARD_ANESTHESIA_POST_OPERATOIRE_DISPLAYCONTROL_KEY": "Anesthesie CR Opératoire",
   "DASHBOARD_TITLE_PATIENT_MOVEMENT_HISTORY_KEY": "Historique Mouvement du Patient",
-  "DASHBOARD_TITLE_BLOOD_PRESSURE": "BP"
+  "DASHBOARD_TITLE_BLOOD_PRESSURE": "BP",
+  "EMPTY_TEMPLATE_MESSAGE": "Cliquer sur 'Ajouter un formulaire' pour ajouter un formulaire ici",
+  "ADD_NEW_OBSERVATION": "Ajouter un formulaire",
+  "CONCEPT_SET_GROUP_SEARCH_LABEL": "Rechercher un formulaire"
+
 }

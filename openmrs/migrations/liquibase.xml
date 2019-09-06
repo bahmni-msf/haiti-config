@@ -147,4 +147,5 @@
     <include file="anesthesieNotesPostOperatoir/anesthesieNotesPostOperatoir.xml"/>
     <include file="radiologyUpload.xml"/>
     <include file="AnesthesieConsultationdesuiv/AnesthesieConsultationdesuiv.xml"/>
+    <include file="registrationModuleChanges/registrationAttribute.xml"/>
 </databaseChangeLog>

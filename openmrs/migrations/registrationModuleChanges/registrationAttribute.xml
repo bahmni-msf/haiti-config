@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="HAITI_CONFIG_201909061138" author="Pritam">
+            <preConditions onFail="MARK_RAN">
+                <sqlCheck expectedResult="0">
+                         select count(*) from concept_name where name= "Le patient est-il admis/réadmis dans la structure" and concept_name_type='FULLY_SPECIFIED' and locale='fr' ;
+                </sqlCheck>
+                <sqlCheck expectedResult="0">
+                         select count(*) from person_attribute_type where name ="Le patient est-il admis/réadmis dans la structure";
+                </sqlCheck>
+            </preConditions>
+            <comment> Adding the Le patient est-il admis/réadmis dans la structure </comment>
+            <sql>
+                set @concept_id = 0;
+                set @concept_short_id = 0;
+                set @concept_full_id = 0;
+                select max(sort_weight) into @weight from person_attribute_type;
+                call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Le patient est-il admis/réadmis dans la structure","Le patient est-il admis/réadmis dans la structure",'Coded','Misc',false);
+                INSERT INTO person_attribute_type (name, description, format, searchable, creator, date_created, retired, sort_weight, uuid, foreign_key)
+                VALUES ("Le patient est-il admis/réadmis dans la structure", "Le patient est-il admis/réadmis dans la structure", 'org.openmrs.Concept', 0, 1, now(), 0, @weight+1, uuid(), @concept_id);
+            </sql>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_201909061139" author="Pritam">
+            <preConditions onFail="MARK_RAN">
+                <sqlCheck expectedResult="0">
+                       select count(*) from concept_answer  where concept_id in(select concept_id from concept_name where name = 'Le patient est-il admis/réadmis dans la structure');
+                     </sqlCheck>
+            </preConditions>
+            <comment>Adding Answers to Le patient est-il admis/réadmis dans la structure</comment>
+            <sql>
+                set @concept_id = 0;
+                set @child1_concept_id = 0;
+                set @child2_concept_id = 0;
+                select concept_id into @concept_id from concept_name where name = "Le patient est-il admis/réadmis dans la structure" and concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                select concept_id into @child1_concept_id from concept_name where name = 'Oui' and concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                select concept_id into @child2_concept_id from concept_name where name = 'Non' and concept_name_type = 'FULLY_SPECIFIED' and locale = 'fr' and voided = 0;
+                call add_concept_answer(@concept_id, @child1_concept_id, 1);
+                call add_concept_answer(@concept_id, @child2_concept_id, 2);
+            </sql>
+    </changeSet>
+    <changeSet id="HAITI_CONFIG_201909061140" author="Pritam">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                     select count(*) from concept_name where name= "Date d'admission" and concept_name_type='FULLY_SPECIFIED' and locale='fr' ;
+            </sqlCheck>
+            <sqlCheck expectedResult="0">
+                     select count(*) from person_attribute_type where name ="Date d'admission";
+            </sqlCheck>
+        </preConditions>
+        <comment> Adding the Date d'admission attribute </comment>
+        <sql>
+            set @concept_id = 0;
+            set @concept_short_id = 0;
+            set @concept_full_id = 0;
+            select max(sort_weight) into @weight from person_attribute_type;
+            INSERT INTO person_attribute_type (name, description, format, searchable, creator, date_created, retired, sort_weight, uuid, foreign_key)
+            VALUES ("Date d'admission", "Date d'admission", 'org.openmrs.util.AttributableDate', 0, 1, now(), 0, @weight+1, uuid(), @concept_id);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

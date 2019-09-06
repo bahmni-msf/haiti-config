@@ -39,7 +39,16 @@
                         "Phone number 2"
                     ],
                     "expanded": true
-                }
+                },
+            "isPatientAdmittedOrReadmitted" : {
+                "title": "Patient admitted or readmitted details",
+                "translationKey": "PATIENT_ADMISSION_READDMISSION_DETAILS",
+                "attributes": [
+                    "Le patient est-il admis/réadmis dans la structure",
+                    "Date d'admission"
+                ],
+                "expanded": true
+              }
             },
             "addressHierarchy": {
                 "showAddressFieldsTopDown": false,
