@@ -12,7 +12,8 @@ SET FOREIGN_KEY_CHECKS=1;
 -- randomize the person names (given_name and family_name to contain random 8 alpha-numeric characters)
 UPDATE person_name
     SET given_name = upper(substring(uuid(),1,8)),
-     family_name = upper(substring(uuid(),1,8))
+        middle_name = upper(substring(uuid(),1,8)),
+        family_name = upper(substring(uuid(),1,8))
     WHERE person_id NOT IN (SELECT person_id FROM provider);
 
 -- randomize +/- 6 months for persons older than ~15 yrs old
