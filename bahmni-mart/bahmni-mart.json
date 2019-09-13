@@ -50,7 +50,12 @@
             "primaryRelative",
             "familyNameLocal",
             "givenNameLocal",
-            "middleNameLocal"
+            "middleNameLocal",
+            "Phone number",
+            "Phone number 1",
+            "Phone number 2",
+            "Full name",
+            "Ancien No de dossier"
           ]
         },
         {
@@ -62,7 +67,8 @@
             "family_name_prefix",
             "family_name",
             "family_name2",
-            "family_name_suffix"
+            "family_name_suffix",
+            "birthdate"
           ]
         }
       ]
