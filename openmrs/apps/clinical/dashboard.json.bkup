@@ -1,0 +1,373 @@
+{
+  "general":
+  {
+    "translationKey":"DASHBOARD_TAB_GENERAL_KEY",
+    "displayByDefault":true,
+    "maxRecentlyViewedPatients":10,
+    "sections":
+    {
+      "patientInformation":
+      {
+        "translationKey":"DASHBOARD_TITLE_PATIENT_INFORMATION_KEY",
+        "type":"patientInformation",
+        "displayOrder":0,
+        "ageLimit":100,
+        "patientAttributes":[
+
+        ],
+        "addressFields":[
+          "address1",
+          "address2",
+          "cityVillage",
+          "countyDistrict"
+        ]
+      },
+      "visits":
+      {
+        "translationKey":"DASHBOARD_TITLE_VISITS_KEY",
+        "type":"visits",
+        "displayOrder":1,
+        "dashboardConfig":
+        {
+          "title":null,
+          "maximumNoOfVisits":5,
+          "groupByVisits":true
+        }
+      },
+      "vitalSignsFormDisplayControl":
+      {
+        "translationKey": "DASHBOARD_SIGNES_VITAUX_FORM_DETAILS",
+        "type": "vitals",
+        "isObservation": true,
+        "showCertainty": true,
+        "showOrder": true,
+        "displayOrder": 2,
+        "dashboardConfig":
+        {
+          "conceptNames": [
+            "SV, Date et Heure enregistrée",
+            "SV, Poids",
+            "SV, Taille",
+            "SV, Indice de masse corporelle (IMC)",
+            "SV, Frequence Respiratoire",
+            "SV, Temperature",
+            "SV, Pouls",
+            "SV, Pression Arterielle Systolique (PAS)",
+            "SV, Pression Arterielle Diastolique (PAD)",
+            "SV, Saturation en Oxygène",
+            "SV, Glycémie",
+            "SV, Hemocue"
+          ],
+          "numberOfVisits": 3,
+          "showDetailsButton": true
+        },
+        "expandedViewConfig": {
+          "conceptNames": [
+            "SV, Date et Heure enregistrée",
+            "SV, Poids",
+            "SV, Taille",
+            "SV, Indice de masse corporelle (IMC)",
+            "SV, Frequence Respiratoire",
+            "SV, Temperature",
+            "SV, Pouls",
+            "SV, Pression Arterielle Systolique (PAS)",
+            "SV, Pression Arterielle Diastolique (PAD)",
+            "SV, Saturation en Oxygène",
+            "SV, Glycémie",
+            "SV, Hemocue"
+          ],
+          "numberOfVisits": "",
+          "pivotTable":
+          {
+          }
+        }
+      },
+      "AnesthesieConsultationinitiale": {
+        "translationKey": "DASHBOARD_ANESTHESIA_INITIALE_DISPLAYCONTROL_KEY",
+        "type": "vitals",
+        "isObservation": true,
+        "displayOrder": 3,
+        "dashboardConfig": {
+          "showDetailsButton": true,
+          "isEditable": true,
+          "conceptNames": [
+            "ACI, Date la consultation",
+            "ACI, Antécédents médicaux",
+            "ACI, Traitement en cours",
+            "ACI, Autres antécédents médicaux",
+            "ACI, Le patient a-t-il des allergies connues a des médicaments ?",
+            "ACI, Type de médicaments",
+            "Type de médicaments",
+            "ACI, Antécédents anesthésiques",
+            "ACI, Spécifiez le nombre d'anesthésies antérieures",
+            "ACI, Réaction indésirable à une anesthésie antérieure",
+            "ACI, Commentaires sur la réaction indésirable",
+            "ACI, Antécédent de transfusion",
+            "ACI, Y a t-il eu incident transfusionnel?",
+            "ADT, Préciser",
+            "ACI, Mallampati, classe",
+            "ACI, Ouverture de la bouche",
+            "ACI, Score d'ASA",
+            "ACI, Type d'anesthésie prévue",
+            "ACI, Type d'anesthésie prévue",
+            "ACI, Hemogramme fait",
+            "ACI, taux d'hémoglobine",
+            "ACI, taux de plaquettes",
+            "ACI, Bilan rénal fait",
+            "ACI, Créatininémie",
+            "ACI, Urée",
+            "ACI, Ionogramme fait",
+            "ACI, Kaliémie",
+            "ACI, Natrémie",
+            "ACI, Résultat de l'observation initial d'anesthésie, commentaires",
+            "ACI, J'ai discuté les risques et bénéfices de l'anesthésie et ai répondu à toutes les questions?",
+            "ACI, Prémédication donnée",
+            "ACI, Type de pré médication",
+            "ACI, Heure de l'injection"
+          ],
+          "numberOfVisits": 3,
+          "showGroupDateTime": true
+        },
+        "expandedViewConfig": {
+          "conceptNames": [
+            "ACI, Date la consultation",
+            "ACI, Antécédents médicaux",
+            "ACI, Traitement en cours",
+            "ACI, Autres antécédents médicaux",
+            "ACI, Le patient a-t-il des allergies connues a des médicaments ?",
+            "ACI, Type de médicaments",
+            "Type de médicaments",
+            "ACI, Antécédents anesthésiques",
+            "ACI, Spécifiez le nombre d'anesthésies antérieures",
+            "ACI, Réaction indésirable à une anesthésie antérieure",
+            "ACI, Commentaires sur la réaction indésirable",
+            "ACI, Antécédent de transfusion",
+            "ACI, Y a t-il eu incident transfusionnel?",
+            "ADT, Préciser",
+            "ACI, Mallampati, classe",
+            "ACI, Ouverture de la bouche",
+            "ACI, Score d'ASA",
+            "ACI, Type d'anesthésie prévue",
+            "ACI, Type d'anesthésie prévue",
+            "ACI, Hemogramme fait",
+            "ACI, taux d'hémoglobine",
+            "ACI, taux de plaquettes",
+            "ACI, Bilan rénal fait",
+            "ACI, Créatininémie",
+            "ACI, Urée",
+            "ACI, Ionogramme fait",
+            "ACI, Kaliémie",
+            "ACI, Natrémie",
+            "ACI, Résultat de l'observation initial d'anesthésie, commentaires",
+            "ACI, J'ai discuté les risques et bénéfices de l'anesthésie et ai répondu à toutes les questions?",
+            "ACI, Prémédication donnée",
+            "ACI, Type de pré médication",
+            "ACI, Heure de l'injection"
+          ],
+          "numberOfVisits": "",
+          "isEditable": true,
+          "showDetailsButton": true,
+          "pivotTable": {}
+        }
+      },
+      "AnesthesieConsultationdesuiv": {
+        "translationKey": "DASHBOARD_ANESTHESIA_DE_SUIVI_DISPLAYCONTROL_KEY",
+        "type": "vitals",
+        "isObservation": true,
+        "displayOrder": 4,
+        "dashboardConfig": {
+          "showDetailsButton": true,
+          "isEditable": true,
+          "conceptNames": [
+            "ACS, Date la consultation",
+            "ACS, Antécédents médicaux",
+            "ACS, Traitement en cours",
+            "ACS, Le patient a-t-il des allergies connues a des médicaments ?",
+            "ACS, Type de traitement pour les allergies",
+            "ACS, Antécédents anesthésiques",
+            "ACS, Mallampati, classe",
+            "ACS, Ouverture de la bouche",
+            "ACS, Score d'ASA",
+            "ACS, Type d'intervention prévue",
+            "ACS, Type d'anesthésie prévue",
+            "ACS, J'ai discuté les risques et bénéfices de l'anesthésie et ai répondu à toutes les questions?",
+            "ACS, Commentaires"
+          ],
+          "numberOfVisits": 3,
+          "showGroupDateTime": true
+        },
+        "expandedViewConfig": {
+          "conceptNames": [
+            "ACS, Date la consultation",
+            "ACS, Antécédents médicaux",
+            "ACS, Traitement en cours",
+            "ACS, Le patient a-t-il des allergies connues a des médicaments ?",
+            "ACS, Type de traitement pour les allergies",
+            "ACS, Antécédents anesthésiques",
+            "ACS, Mallampati, classe",
+            "ACS, Ouverture de la bouche",
+            "ACS, Score d'ASA",
+            "ACS, Type d'intervention prévue",
+            "ACS, Type d'anesthésie prévue",
+            "ACS, J'ai discuté les risques et bénéfices de l'anesthésie et ai répondu à toutes les questions?",
+            "ACS, Commentaires"
+          ],
+          "isEditable": true,
+          "numberOfVisits": "",
+          "showDetailsButton": true,
+          "pivotTable": {}
+        }
+      },
+      "AnesthesieCROpératoire": {
+        "translationKey": "DASHBOARD_ANESTHESIA_POST_OPERATOIRE_DISPLAYCONTROL_KEY",
+        "type": "vitals",
+        "isObservation": true,
+        "displayOrder": 5,
+        "dashboardConfig": {
+          "showDetailsButton": true,
+          "isEditable": true,
+          "conceptNames": [
+            "ANPO, Heure de début d'anesthésie",
+            "ANPO, Heure de fin d'anesthésie",
+            "ANPO, Type d'anesthésie réalisée",
+            "ANPO, Drogues spéciales utilisées pendant la chirurgie",
+            "ANPO, Complication de l'anesthésie",
+            "ANPO, Description de la complication",
+            "ANPO, Transfuson sanguine",
+            "ANPO, Produit sanguin administré en per opératoire",
+            "ANPO, Nombre d'unités administrées",
+            "ANPO, Réaction transfusionnelle per operatoire",
+            "ANPO, Commentaires",
+            "ANPO, Quantité de fluides reçue",
+            "ANPO, Hemoglobine",
+            "ANPO, Glycémie",
+            "ANPO, Matériel présent",
+            "ANPO, Notes d'anesthésie post opératoire"
+          ],
+          "numberOfVisits": 3,
+          "showGroupDateTime": true
+        },
+        "expandedViewConfig": {
+          "conceptNames": [
+            "ANPO, Heure de début d'anesthésie",
+            "ANPO, Heure de fin d'anesthésie",
+            "ANPO, Type d'anesthésie réalisée",
+            "ANPO, Drogues spéciales utilisées pendant la chirurgie",
+            "ANPO, Complication de l'anesthésie",
+            "ANPO, Description de la complication",
+            "ANPO, Transfuson sanguine",
+            "ANPO, Produit sanguin administré en per opératoire",
+            "ANPO, Nombre d'unités administrées",
+            "ANPO, Réaction transfusionnelle per operatoire",
+            "ANPO, Commentaires",
+            "ANPO, Quantité de fluides reçue",
+            "ANPO, Hemoglobine",
+            "ANPO, Glycémie",
+            "ANPO, Matériel présent",
+            "ANPO, Notes d'anesthésie post opératoire"
+          ],
+          "isEditable": true,
+          "numberOfVisits": "",
+          "showDetailsButton": true,
+          "pivotTable": {}
+        }
+      },
+      "patientMovementHistory": {
+        "type": "custom",
+        "displayType": "Full-Page",
+        "displayOrder": 11,
+        "config": {
+          "title": "DASHBOARD_TITLE_PATIENT_MOVEMENT_HISTORY_KEY",
+          "template": "<patient-movement-history section='section' patient='patient' visitUuid='visitUuid'></patient-movement-history>"
+        }
+      },
+      "disposition":{
+        "translationKey":"DASHBOARD_TITLE_DISPOSITION_KEY",
+        "showDetailsButton":true,
+        "type":"disposition",
+        "numberOfVisits":5,
+        "displayOrder": 7
+      },
+      "validationForms-2.0": {
+        "type": "formsV2",
+        "displayOrder": 8,
+        "dashboardConfig": {
+          "title": null,
+          "maximumNoOfVisits": 5
+        },
+        "formGroup": ["Signes vitaux","Anesthésie Consultation Initiale","Anesthesie CR Opératoire","Anesthésie Consultation de suivi"],
+        "translationKey": "Modifier les formulaires"
+      },
+      "Radiology": {
+        "type": "radiology",
+        "groupByVisits": true,
+        "translationKey": "DASHBOARD_TITLE_RADIOLOGY_KEY",
+        "displayOrder": 9,
+        "config": {
+          "translationKey": "DASHBOARD_TITLE_RADIOLOGY_KEY"
+        }
+      }
+
+    }
+  },
+  "trends": {
+    "translationKey": "Tendances",
+    "maxRecentlyViewedPatients": 10,
+    "sections": {
+      "poidsTrends":{
+        "type":"observationGraph",
+        "title":"Poids",
+        "config":{
+          "yAxisConcepts":["SV, Poids"],
+          "xAxisConcept":"observationDateTime",
+          "numberOfVisits":""
+        },
+        "displayOrder":1
+      },
+      "poulsTrends":{
+        "type":"observationGraph",
+        "title":"Pouls",
+        "config":{
+          "yAxisConcepts":["SV, Pouls"],
+          "xAxisConcept":"observationDateTime",
+          "numberOfVisits":""
+        },
+        "displayOrder":2
+      },
+      "temperatureTrends":{
+        "type":"observationGraph",
+        "title":"Temperature",
+        "config":{
+          "yAxisConcepts":["SV, Temperature"],
+          "xAxisConcept":"observationDateTime",
+          "numberOfVisits":""
+        },
+        "displayOrder":3
+      },
+      "frequencyRespiratoireTrends":{
+        "type":"observationGraph",
+        "title":"Frequence Respiratoire",
+        "config":{
+          "yAxisConcepts":["SV, Frequence Respiratoire"],
+          "xAxisConcept":"observationDateTime",
+          "numberOfVisits": ""
+        },
+        "displayOrder":4
+      },
+
+      "BP":{
+        "type":"observationGraph",
+        "translationKey": "DASHBOARD_TITLE_BLOOD_PRESSURE",
+        "config":{
+          "yAxisConcepts":[
+            "SV, Pression Arterielle Diastolique (PAD)",
+            "SV, Pression Arterielle Systolique (PAS)"
+          ],
+          "xAxisConcept":"observationDateTime",
+          "numberOfVisits":10
+        },
+        "displayOrder":2
+      }
+    }
+  }
+}

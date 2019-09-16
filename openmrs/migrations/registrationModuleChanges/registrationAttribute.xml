@@ -26,6 +26,20 @@
                 VALUES ("Le patient est-il admis/réadmis dans la structure", "Le patient est-il admis/réadmis dans la structure", 'org.openmrs.Concept', 0, 1, now(), 0, @weight+1, uuid(), @concept_id);
             </sql>
     </changeSet>
+
+    <changeSet id="HAITI_CONFIG_201909161149" author="Sreekalyan">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from concept_name where name in ("Oui","Non") and concept_name_type='FULLY_SPECIFIED' and locale='fr';
+            </sqlCheck>
+        </preConditions>
+        <comment> Adding the Concepts Oui and Non </comment>
+        <sql>
+            call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Oui","Oui",'N/A','Misc',false);
+            call add_concept(@concept_id,@concept_short_id,@concept_full_id,"Non","Non",'N/A','Misc',false);
+        </sql>
+    </changeSet>
+
     <changeSet id="HAITI_CONFIG_201909061139" author="Pritam">
             <preConditions onFail="MARK_RAN">
                 <sqlCheck expectedResult="0">

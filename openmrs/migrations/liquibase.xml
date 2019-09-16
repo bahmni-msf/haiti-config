@@ -143,9 +143,9 @@
       </sql>
     </changeSet>
     <include file="vitalSigns/vitalSignsForm.xml"/>
-    <include file="AnesthesieConsultatioinitiale/AnesthesieConsultatioinitiale.xml"/>
-    <include file="anesthesieNotesPostOperatoir/anesthesieNotesPostOperatoir.xml"/>
+<!--    <include file="AnesthesieConsultatioinitiale/AnesthesieConsultatioinitiale.xml"/>-->
+<!--    <include file="anesthesieNotesPostOperatoir/anesthesieNotesPostOperatoir.xml"/>-->
     <include file="radiologyUpload.xml"/>
-    <include file="AnesthesieConsultationdesuiv/AnesthesieConsultationdesuiv.xml"/>
+<!--    <include file="AnesthesieConsultationdesuiv/AnesthesieConsultationdesuiv.xml"/>-->
     <include file="registrationModuleChanges/registrationAttribute.xml"/>
 </databaseChangeLog>
