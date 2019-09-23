@@ -54,8 +54,7 @@
             "Phone number",
             "Phone number 1",
             "Phone number 2",
-            "Full name",
-            "Ancien No de dossier"
+            "Full name"
           ]
         },
         {
@@ -69,6 +68,13 @@
             "family_name2",
             "family_name_suffix",
             "birthdate"
+          ]
+        },
+        {
+          "tableName": "person_address_default",
+          "columnsToIgnore": [
+            "address1",
+            "address2"
           ]
         }
       ]
