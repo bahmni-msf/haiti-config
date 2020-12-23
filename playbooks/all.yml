@@ -6,3 +6,4 @@
     - { role: bahmni-core, tags: bahmni_core }
     - { role: appointments, tags: appointments }
     - { role: bahmni-ie-apps, tags: bahmni_ie_apps }
+    - { role: openmrs-ui-framework, tags: openmrs_ui_framework }
