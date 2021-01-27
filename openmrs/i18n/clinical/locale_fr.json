@@ -136,6 +136,13 @@
   "DASHBOARD_TITLE_BLOOD_PRESSURE": "BP",
   "EMPTY_TEMPLATE_MESSAGE": "Cliquer sur 'Ajouter un formulaire' pour ajouter un formulaire ici",
   "ADD_NEW_OBSERVATION": "Ajouter un formulaire",
-  "CONCEPT_SET_GROUP_SEARCH_LABEL": "Rechercher un formulaire"
+  "CONCEPT_SET_GROUP_SEARCH_LABEL": "Rechercher un formulaire",
+  "SELECT_BED_TO_ADMIT_PATIENT_DEFAULT_MESSAGE": "Veuillez sélectionner un lit pour admettre le patient",
+  "BED_IS_ASSIGNED_SUCCESSFULLY_MESSAGE": "{{bed}} Le lit est attribué avec succès",
+  "SELECT_AVAILABLE_BED_DEFAULT_MESSAGE": "Veuillez sélectionner un lit disponible. Ce lit est déjà attribué à {{identifier}} ",
+  "SUCCESSFULLY_DISCHARGED_MESSAGE": "Déchargé avec succès de {{bedNumber}}",
+  "SELECT_BED_TO_TRANSFER_MESSAGE": "Veuillez sélectionner un lit pour transférer le patient",
+  "SELECT_BED_TO_DISCHARGE_MESSAGE": "Veuillez sélectionner un lit pour libérer le patient",
+  "NO_ACTIVE_VISIT_MESSAGE": "Aucune visite active trouvée pour ce patient"
 
 }
