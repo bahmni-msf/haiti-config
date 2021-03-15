@@ -4,3 +4,8 @@ appointments: https://bahmni-msf.s3.ap-south-1.amazonaws.com/haiti-release-artef
 bahmnicore: https://bahmni-msf.s3.ap-south-1.amazonaws.com/haiti-release-artefacts/release-1.0/bahmnicore-0.92-SNAPSHOT.omod
 bahmniieapps: https://bahmni-msf.s3.ap-south-1.amazonaws.com/haiti-release-artefacts/release-1.2/bahmni.ie.apps.omod
 uiframework: https://dl.bintray.com/openmrs/omod/uiframework-3.19.0.omod
+appointment_frontend:
+emr_api_omod:
+event_omod:
+patient_identifier_generator:
+visit_close_omod:
